@@ -48,6 +48,7 @@ public class GameHelper : MonoBehaviour
         savedDead = dead_countdown;
         quest_giver = FindObjectOfType<Quest_Giver>();
         session_end_talked = false;
+        /*
         if (!GameManager.manager.mute_music)
         {
             GameManager.manager.title_soundtrack.Stop();
@@ -61,6 +62,7 @@ public class GameHelper : MonoBehaviour
             GameManager.manager.gameplay_soundtrack.Stop();
             GameManager.manager.title_soundtrack.Stop();
         }
+        */
     }
 
     // Update is called once per frame
@@ -131,7 +133,7 @@ public class GameHelper : MonoBehaviour
         {
             pausePanel.SetActive(false);
         }
-
+        /*
         if (GameManager.manager.mute_music)
         {
             musictxt.text = "Music Off";
@@ -149,6 +151,7 @@ public class GameHelper : MonoBehaviour
         {
             sfxtxt.text = "Sfx On";
         }
+        */
     }
     
     public void PauseGame()
@@ -215,6 +218,7 @@ public class GameHelper : MonoBehaviour
         
     }
 
+    /*
     public void Music_OnOff()
     {
         GameManager.manager.mute_music = !GameManager.manager.mute_music;
@@ -230,9 +234,9 @@ public class GameHelper : MonoBehaviour
             }
         }
     }
-
+    */
     public void Sfx_OnOff()
     {
-        GameManager.manager.mute_sfx = !GameManager.manager.mute_sfx;
+        //GameManager.manager.mute_sfx = !GameManager.manager.mute_sfx;
     }
 }

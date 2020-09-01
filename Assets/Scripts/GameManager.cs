@@ -27,6 +27,7 @@ public class GameManager : MonoBehaviour
     public bool enable_Boss;
     private float distMultiply;
 
+    /*
     [Header("Sound Stuff")]
     public AudioSource jump_sfx;
     public AudioSource hit_sfx;
@@ -39,7 +40,7 @@ public class GameManager : MonoBehaviour
     public bool play_soundtrack;
     public bool mute_music;
     public bool mute_sfx;
-
+    */
     private void Awake()
     {
         if (manager == null)
@@ -69,7 +70,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            finalSpeed = savefinalSpeed + distMultiply;
+            //finalSpeed = savefinalSpeed + distMultiply;
         }
 
         if(distanceMoved >= 10000)
@@ -94,7 +95,7 @@ public class GameManager : MonoBehaviour
                 randomBoss();
             }
         }
-
+        /*
         if (mute_music)
         {
             title_soundtrack.mute = true;
@@ -121,6 +122,7 @@ public class GameManager : MonoBehaviour
             death_sfx.mute = false;
             smash_sfx.mute = false;
         }
+        */
     }
 
     public void randomBoss()

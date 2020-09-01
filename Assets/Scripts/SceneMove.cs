@@ -14,8 +14,8 @@ public class SceneMove : MonoBehaviour
         GameManager.manager.bossBattle = false;
         GameManager.manager.distanceMoved = 0;
         GameManager.manager.bossAppearDist = 500;
-        GameManager.manager.play_hit_sfx = false;
-        GameManager.manager.play_death_sfx = false;
+        //GameManager.manager.play_hit_sfx = false;
+        //GameManager.manager.play_death_sfx = false;
 
     }
 }

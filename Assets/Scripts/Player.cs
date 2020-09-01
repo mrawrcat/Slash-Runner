@@ -172,7 +172,7 @@ public class Player : MonoBehaviour
     public void Jump()
     {
         
-        GameManager.manager.jump_sfx.Play();
+        //GameManager.manager.jump_sfx.Play();
         rb2d.velocity = Vector2.zero;
         rb2d.AddForce(Vector2.up * jumpforce, ForceMode2D.Impulse);
     }
@@ -226,7 +226,7 @@ public class Player : MonoBehaviour
     {
         if (GameManager.manager.dead)
         {
-            
+            /*
             if (!GameManager.manager.hit_sfx.isPlaying && !GameManager.manager.play_hit_sfx)
             {
                 GameManager.manager.hit_sfx.Play();
@@ -247,14 +247,17 @@ public class Player : MonoBehaviour
                     GameManager.manager.death_sfx.Play();
                     GameManager.manager.play_death_sfx = true;
                 }
+                
                 transform.position = new Vector2(-5, -10);
                 rb2d.velocity = Vector2.zero;
                 GameManager.manager.isUnder = true;
                 //rb2d.gravityScale = 0;
             }
+            */
         }
         if (GameManager.manager.movingReset)
         {
+            /*
             GameManager.manager.play_hit_sfx = false;
             GameManager.manager.play_death_sfx = false;
             if (GameManager.manager.death_sfx.isPlaying)
@@ -267,7 +270,7 @@ public class Player : MonoBehaviour
                 GameManager.manager.gameplay_soundtrack.Play();
                 
             }
-
+            */
             if (rb2d.velocity.y < 0)
             {
                 rb2d.velocity = Vector2.zero;
@@ -490,7 +493,7 @@ public class Player : MonoBehaviour
             if (enemy.GetComponent<Enemy>() != null)
             {
 
-                GameManager.manager.smash_sfx.Play();
+                //GameManager.manager.smash_sfx.Play();
                 
 
                 if (!isFrozen)
@@ -503,7 +506,7 @@ public class Player : MonoBehaviour
             if (enemy.GetComponent<Box>() != null)
             {
 
-                GameManager.manager.smash_sfx.Play();
+                //GameManager.manager.smash_sfx.Play();
                 
 
                 if (!isFrozen)
@@ -515,7 +518,7 @@ public class Player : MonoBehaviour
             if (enemy.GetComponent<Barrel>() != null)
             {
 
-                GameManager.manager.smash_sfx.Play();
+                //GameManager.manager.smash_sfx.Play();
                 
                 if (!isFrozen)
                 {
@@ -526,7 +529,7 @@ public class Player : MonoBehaviour
             if(enemy.GetComponent<EnemyProjectile>() != null)
             {
 
-                GameManager.manager.smash_sfx.Play();
+                //GameManager.manager.smash_sfx.Play();
                 if (!isFrozen)
                 {
                     StartCoroutine(do_freeze_public(.1f));
