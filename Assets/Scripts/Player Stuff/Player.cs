@@ -503,18 +503,6 @@ public class Player : MonoBehaviour
                 Debug.Log("hit enemy");
                 enemy.GetComponent<Enemy>().TakeDmg();
             }
-            if (enemy.GetComponent<Box>() != null)
-            {
-
-                //GameManager.manager.smash_sfx.Play();
-                
-
-                if (!isFrozen)
-                {
-                    StartCoroutine(do_freeze_public(.1f));
-                }
-                enemy.GetComponent<Box>().Take_Dmg();
-            }
             if (enemy.GetComponent<Barrel>() != null)
             {
 

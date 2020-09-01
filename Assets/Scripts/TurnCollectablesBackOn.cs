@@ -4,17 +4,17 @@ using UnityEngine;
 
 public class TurnCollectablesBackOn : MonoBehaviour
 {
-    public GameObject[] collectables;
+    public GameObject[] Objects;
     // Start is called before the first frame update
     
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.tag == "CollectableOnDetect")
+        if(collision.tag == "TurnObjectsOn")
         {
-            for (int i = 0; i< collectables.Length; i++)
+            for (int i = 0; i< Objects.Length; i++)
             {
-                collectables[i].SetActive(true);
+                Objects[i].SetActive(true);
             }
             //print("touched turn collectables on detect trigger");
         }

@@ -27,20 +27,20 @@ public class GameManager : MonoBehaviour
     public bool enable_Boss;
     private float distMultiply;
 
-    /*
-    [Header("Sound Stuff")]
-    public AudioSource jump_sfx;
-    public AudioSource hit_sfx;
-    public AudioSource death_sfx;
-    public AudioSource smash_sfx;
-    public AudioSource title_soundtrack;
-    public AudioSource gameplay_soundtrack;
-    public bool play_hit_sfx;
-    public bool play_death_sfx;
-    public bool play_soundtrack;
-    public bool mute_music;
-    public bool mute_sfx;
-    */
+    
+    //[Header("Sound Stuff")]
+    //public AudioSource jump_sfx;
+    //public AudioSource hit_sfx;
+    //public AudioSource death_sfx;
+    //public AudioSource smash_sfx;
+    //public AudioSource title_soundtrack;
+    //public AudioSource gameplay_soundtrack;
+    //public bool play_hit_sfx;
+    //public bool play_death_sfx;
+    //public bool play_soundtrack;
+    //public bool mute_music;
+    //public bool mute_sfx;
+   
     private void Awake()
     {
         if (manager == null)

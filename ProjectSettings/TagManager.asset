@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Tilemap
   - Slide Wall
+  - TurnObjectsOn
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -17,10 +19,10 @@ TagManager:
   - 
   - Ground
   - Wall
-  - 
-  - 
-  - 
-  - 
+  - ReviveGround
+  - PlayerProjectile
+  - Player
+  - Enemy
   - 
   - 
   - 
