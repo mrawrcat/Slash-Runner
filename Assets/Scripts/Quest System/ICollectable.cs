@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface IEnemy
+public interface ICollectable
 {
-    int ID { get; set; }
-    void Die();
+    string itemID { get; set; }
+    void Collect();
 }
