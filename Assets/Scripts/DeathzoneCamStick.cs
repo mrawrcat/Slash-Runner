@@ -10,8 +10,9 @@ public class DeathzoneCamStick : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        booga = new Vector2(0, 0.5f);
+        //booga = new Vector2(0, 0.5f);
         cam = Camera.main;
+        //0 is left, 1 is right, .5 is middle for x and y axis
         transform.position = cam.ViewportToWorldPoint(booga);
     }
 }

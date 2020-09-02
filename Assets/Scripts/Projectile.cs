@@ -24,8 +24,13 @@ public class Projectile : MonoBehaviour
             {
                 particles.SpawnParticle(transform);
                 gameObject.SetActive(false);
-                Debug.Log("hit :" + collision.collider.tag);
+                Debug.Log("player projectile hit :" + collision.collider.tag);
             }
+        }
+        if(collision.collider.tag == "TurnObjectsOn")
+        {
+            gameObject.SetActive(false);
+            Debug.Log("player projectile hit :" + collision.collider.tag);
         }
     }
 
@@ -38,6 +43,11 @@ public class Projectile : MonoBehaviour
                 particles.SpawnParticle(transform);
                 gameObject.SetActive(false);
             }
+        }
+        if (collision.collider.tag == "TurnObjectsOn")
+        {
+            gameObject.SetActive(false);
+            Debug.Log("player projectile hit :" + collision.collider.tag);
         }
     }
 
@@ -52,6 +62,11 @@ public class Projectile : MonoBehaviour
                 Debug.Log("hit :" + collision.tag);
             }
         }
+        if (collision.tag == "TurnObjectsOn")
+        {
+            gameObject.SetActive(false);
+            Debug.Log("player projectile hit :" + collision.tag);
+        }
     }
 
     private void OnTriggerStay2D(Collider2D collision)
@@ -63,6 +78,11 @@ public class Projectile : MonoBehaviour
                 particles.SpawnParticle(transform);
                 gameObject.SetActive(false);
             }
+        }
+        if (collision.tag == "TurnObjectsOn")
+        {
+            gameObject.SetActive(false);
+            Debug.Log("player projectile hit :" + collision.tag);
         }
     }
 }
