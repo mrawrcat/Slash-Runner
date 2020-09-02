@@ -1,193 +1,109 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class GameHelper : MonoBehaviour
 {
-    [SerializeField] private Player player;
+    public GameObject[] start_tilemaps;
 
-    [Header("UI stuff")]
-    public float dead_countdown;
-    private float savedDead;
-    public GameObject deadPanel;
-    public Image continuePanel;
-    public GameObject pausePanel;
-    public Text musictxt;
-    public Text sfxtxt;
-    private bool options_panel_onoff;
+    public ObjectPoolNS pool;
+    
 
-    public RectTransform reviveButtonRect;
-    public RectTransform deadStats;
+    [Header("Dead stuff")]
+    public GameObject continue_panel;
+    public GameObject dead_panel;
 
     [Header("Text stuff")]
     public Text coins;
     public Text distance;
-    public Text dead5txt;
+    public Text dead_countdownTxt;
     public Text deadcoins;
     public Text deaddist;
 
-    public ObjectPoolNS pool;
-    public GameObject[] start_tilemaps;
-
-    public GameObject[] Boss;
+    [Header("RectTransforms")]
+    public RectTransform reviveButtonRect;
+    //public RectTransform deadStats;
 
     private float distLerpHolder;
     private float coinsLerpHolder;
     private float lerpSpeed;
+    private float dead_countdown;
 
-    private Quest_Giver quest_giver;
-    public bool session_end_talked;
+    private PlayerDeath player_death;
     // Start is called before the first frame update
     void Start()
     {
-        player = FindObjectOfType<Player>();
-        reviveButtonRect.anchoredPosition = new Vector2(0, 400);
-        deadStats.anchoredPosition = new Vector2(0, 500);
-        savedDead = dead_countdown;
-        quest_giver = FindObjectOfType<Quest_Giver>();
-        session_end_talked = false;
-        /*
-        if (!GameManager.manager.mute_music)
-        {
-            GameManager.manager.title_soundtrack.Stop();
-            if (!GameManager.manager.gameplay_soundtrack.isPlaying)
-            {
-                GameManager.manager.gameplay_soundtrack.Play();
-            }
-        }
-        else
-        {
-            GameManager.manager.gameplay_soundtrack.Stop();
-            GameManager.manager.title_soundtrack.Stop();
-        }
-        */
+        player_death = FindObjectOfType<PlayerDeath>();
+        //pool = GameObject.Find("Tilemap").GetComponent<ObjectPoolNS>();
     }
 
     // Update is called once per frame
     void Update()
     {
         show_text();
-        if (!GameManager.manager.dead)
-        {
-            if (!GameManager.manager.movingReset)
-            {
-                GameManager.manager.distanceMoved += GameManager.manager.finalSpeed * Time.deltaTime;
-            }
-        }
-
-        for (int i = 0; i < Boss.Length; i++)
-        {
-            if(i == GameManager.manager.whichBoss)
-            {
-                Boss[i].SetActive(true);
-            }
-            else
-            {
-                Boss[i].SetActive(false);
-            }
-        }
-
-        if (GameManager.manager.isUnder)
-        {
-            Move_Continue();
-            continuePanel.enabled = true;
-            dead_countdown -= Time.deltaTime;
-            if(dead_countdown <= 0)
-            {
-                reviveButtonRect.anchoredPosition = new Vector2(0, 400);
-                deadPanel.SetActive(true);
-                MoveDeadStats();
-                lerpSpeed += Time.deltaTime / 2;
-                if (!session_end_talked)
-                {
-                    quest_giver.Talk_to_Quest_Giver();
-                    session_end_talked = true;
-                }
-
-            }
-        }
-        else
-        {
-            continuePanel.enabled = false;
-            dead_countdown = savedDead;
-            reviveButtonRect.anchoredPosition = new Vector2(0, 400);
-            deadStats.anchoredPosition = new Vector2(0, 500);
-            deadPanel.SetActive(false);
-            lerpSpeed = 0;
-        }
-
-
-        Sound_Stuff();
-
-    }
-
-    private void Sound_Stuff()
-    {
-        if (options_panel_onoff)
-        {
-            pausePanel.SetActive(true);
-        }
-        else
-        {
-            pausePanel.SetActive(false);
-        }
-        /*
-        if (GameManager.manager.mute_music)
-        {
-            musictxt.text = "Music Off";
-        }
-        else
-        {
-            musictxt.text = "Music On";
-        }
-
-        if (GameManager.manager.mute_sfx)
-        {
-            sfxtxt.text = "Sfx Off";
-        }
-        else
-        {
-            sfxtxt.text = "Sfx On";
-        }
-        */
-    }
-    
-    public void PauseGame()
-    {
-        Time.timeScale = 0;
-        options_panel_onoff = true;
-    }
-
-    public void ResumeGame()
-    {
-        Time.timeScale = 1;
-        options_panel_onoff = false;
-
+        If_Dead();
     }
 
     private void show_text()
     {
-        dead5txt.text = dead_countdown.ToString("F0");
+        dead_countdownTxt.text = dead_countdown.ToString("F0");
         coins.text = GameManager.manager.coins.ToString("F0");
         distance.text = GameManager.manager.distanceMoved.ToString("F0");
         deaddist.text = "Distance moved " + distLerpHolder.ToString("F0");
         deadcoins.text = "Total Coins Gained: " + coinsLerpHolder.ToString("F0");
-
-
     }
+
+    private void If_Dead()
+    {
+        if (GameManager.manager.isUnder && dead_countdown >= 0)
+        {
+            Move_Continue();
+            dead_countdown -= Time.deltaTime;
+            
+        }
+        else if (GameManager.manager.isUnder && dead_countdown < 0)
+        {
+            reviveButtonRect.anchoredPosition = new Vector2(0, 400);
+            MoveDeadStats();
+            lerpSpeed += Time.deltaTime;
+
+        }
+        else
+        {
+            continue_panel.SetActive(false);
+            dead_countdown = 10f;
+            reviveButtonRect.anchoredPosition = new Vector2(0, 400);
+            //deadStats.anchoredPosition = new Vector2(0, 500);
+            dead_panel.SetActive(false);
+            lerpSpeed = 0;
+
+        }
+    }
+
 
     public void Move_Continue()
     {
+        continue_panel.SetActive(true);
         reviveButtonRect.anchoredPosition = Vector2.Lerp(reviveButtonRect.anchoredPosition, new Vector2(0, 0), 5f * Time.deltaTime);
     }
 
     public void MoveDeadStats()
     {
-        deadStats.anchoredPosition = Vector2.Lerp(deadStats.anchoredPosition, new Vector2(0, 65), 5f * Time.deltaTime);
+        dead_panel.SetActive(true);
+        //deadStats.anchoredPosition = Vector2.Lerp(deadStats.anchoredPosition, new Vector2(0, 65), 5f * Time.deltaTime);
         distLerpHolder = Mathf.Lerp(0, GameManager.manager.distanceMoved, lerpSpeed);
         coinsLerpHolder = Mathf.Lerp(0, GameManager.manager.coins, lerpSpeed);
+    }
+
+    public void pauseGame()
+    {
+        Time.timeScale = 0;
+    }
+
+    public void resumeGame()
+    {
+        Time.timeScale = 1;
     }
 
     public void Restart()
@@ -203,40 +119,22 @@ public class GameHelper : MonoBehaviour
         GameManager.manager.dead = false;
         GameManager.manager.movingReset = true;
         GameManager.manager.bossBattle = false;
-        for(int i = 0; i< Boss.Length; i++)
+        /*
+        for (int i = 0; i < Boss.Length; i++)
         {
             Boss[i].GetComponent<BossBattle>().InstantMove();
         }
         GameManager.manager.bossAppearDist = 500;
-        player.InstantMove();
+        */
+        player_death.InstantMove();
+        //GameManager.manager.finalSpeed = 10;
     }
 
     public void Continue()
     {
         GameManager.manager.dead = false;
         GameManager.manager.movingReset = true;
-        
-    }
+        //GameManager.manager.finalSpeed = 10;
 
-    /*
-    public void Music_OnOff()
-    {
-        GameManager.manager.mute_music = !GameManager.manager.mute_music;
-        if (!GameManager.manager.mute_music)
-        {
-            if (!GameManager.manager.gameplay_soundtrack.isPlaying)
-            {
-                GameManager.manager.gameplay_soundtrack.Play();
-            }
-            if (GameManager.manager.title_soundtrack.isPlaying)
-            {
-                GameManager.manager.title_soundtrack.Stop();
-            }
-        }
-    }
-    */
-    public void Sfx_OnOff()
-    {
-        //GameManager.manager.mute_sfx = !GameManager.manager.mute_sfx;
     }
 }

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GHelper : MonoBehaviour
+public class GameStatus : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
@@ -14,15 +14,5 @@ public class GHelper : MonoBehaviour
     void Update()
     {
         
-    }
-
-    public void pauseGame()
-    {
-        Time.timeScale = 0;
-    }
-
-    public void resumeGame()
-    {
-        Time.timeScale = 1;
     }
 }

@@ -18,4 +18,9 @@ public class SceneMove : MonoBehaviour
         //GameManager.manager.play_death_sfx = false;
 
     }
+
+    public void move_to_title()
+    {
+        SceneManager.LoadScene("Title");
+    }
 }

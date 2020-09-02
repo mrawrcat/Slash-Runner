@@ -26,20 +26,6 @@ public class GameManager : MonoBehaviour
     [Header("Game Mode Stuff")]
     public bool enable_Boss;
     private float distMultiply;
-
-    
-    //[Header("Sound Stuff")]
-    //public AudioSource jump_sfx;
-    //public AudioSource hit_sfx;
-    //public AudioSource death_sfx;
-    //public AudioSource smash_sfx;
-    //public AudioSource title_soundtrack;
-    //public AudioSource gameplay_soundtrack;
-    //public bool play_hit_sfx;
-    //public bool play_death_sfx;
-    //public bool play_soundtrack;
-    //public bool mute_music;
-    //public bool mute_sfx;
    
     private void Awake()
     {
@@ -56,8 +42,8 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        savefinalSpeed = finalSpeed;
         bossAppearDist = 500;
+        savefinalSpeed = finalSpeed;
     }
 
     // Update is called once per frame
@@ -70,18 +56,9 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            //finalSpeed = savefinalSpeed + distMultiply;
+            finalSpeed = savefinalSpeed;
         }
-
-        if(distanceMoved >= 10000)
-        {
-            distMultiply = 10;
-        }
-        else
-        {
-            distMultiply = distanceMoved / 1000;
-        }
-
+        
         if(invincible > 0)
         {
             invincible -= Time.deltaTime;
@@ -95,34 +72,17 @@ public class GameManager : MonoBehaviour
                 randomBoss();
             }
         }
-        /*
-        if (mute_music)
-        {
-            title_soundtrack.mute = true;
-            gameplay_soundtrack.mute = true;
 
-        }
-        else
-        {
-            title_soundtrack.mute = false;
-            gameplay_soundtrack.mute = false;
-        }
+        Calculate_Distance();
+    }
 
-        if (mute_sfx)
+    private void Calculate_Distance()
+    {
+        if (!dead && !movingReset)
         {
-            jump_sfx.mute = true;
-            hit_sfx.mute = true;
-            death_sfx.mute = true;
-            smash_sfx.mute = true;
+            GameManager.manager.distanceMoved += GameManager.manager.finalSpeed * Time.deltaTime;
         }
-        else
-        {
-            jump_sfx.mute = false;
-            hit_sfx.mute = false;
-            death_sfx.mute = false;
-            smash_sfx.mute = false;
-        }
-        */
+       
     }
 
     public void randomBoss()
