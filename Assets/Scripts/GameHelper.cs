@@ -96,6 +96,11 @@ public class GameHelper : MonoBehaviour
         coinsLerpHolder = Mathf.Lerp(0, GameManager.manager.coins, lerpSpeed);
     }
 
+    public void MoveQuestText()
+    {
+
+    }
+
     public void pauseGame()
     {
         Time.timeScale = 0;

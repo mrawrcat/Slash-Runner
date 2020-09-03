@@ -17,13 +17,14 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField]
     private ObjectPoolNS bullet_pool;
 
+    [SerializeField]
     private Animator anim;
     private CamShake shake;
     private bool isFrozen;
     // Start is called before the first frame update
     void Start()
     {
-        anim = GetComponentInChildren<Animator>();
+        anim = FindObjectOfType<PlayerUpperAnim>().gameObject.GetComponent<Animator>();
         shake = FindObjectOfType<CamShake>();
     }
 

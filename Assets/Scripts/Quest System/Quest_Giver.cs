@@ -8,20 +8,22 @@ public class Quest_Giver : MonoBehaviour
 {
     public bool Assigned_Quest;
     public bool Helped;
+    public int how_many_quests;
     [SerializeField]
-    private string quest_script_name;
+    private string[] quest_script_name;
     public GameObject quest;
     private Quest Quest;
     public string quest_name_desc;
     public Text descTxt;
     public RectTransform descTransform;
-    private bool showedQuest;
+    private bool showedQuest = false;
+    public int questNum;
     void Start()
     {
+        questNum = Random.Range(0, how_many_quests);
         Talk_to_Quest_Giver();
-        descTransform.anchoredPosition = new Vector2(0, 300);
-        showedQuest = false;
-
+        //descTransform.anchoredPosition = new Vector2(0, 300);
+        //showedQuest = false;
     }
 
     void Update()
@@ -33,6 +35,10 @@ public class Quest_Giver : MonoBehaviour
         if (!showedQuest)
         {
             StartCoroutine(Show_Quest());
+        }
+        else
+        {
+            StartCoroutine(Hide_Quest());
         }
     }
 
@@ -53,7 +59,7 @@ public class Quest_Giver : MonoBehaviour
     void Assign_Quest()
     {
         Assigned_Quest = true;
-        Quest = (Quest)quest.AddComponent(System.Type.GetType(quest_script_name));
+        Quest = (Quest)quest.AddComponent(System.Type.GetType(quest_script_name[questNum]));
     }
 
     void Giver_Checks_Quest()
@@ -73,12 +79,18 @@ public class Quest_Giver : MonoBehaviour
     }
     IEnumerator Show_Quest()
     {
+        descTransform.anchoredPosition = new Vector2(0, 300);
         yield return new WaitForSeconds(1f);
         descTransform.anchoredPosition = Vector2.Lerp(descTransform.anchoredPosition, new Vector2(0, -75), 5f * Time.deltaTime);
-        yield return new WaitForSeconds(2f);
-        descTransform.anchoredPosition = Vector2.Lerp(descTransform.anchoredPosition, new Vector2(0, 300), 5f * Time.deltaTime);
+        yield return new WaitForSeconds(1f);
         showedQuest = true;
 
+    }
+
+    IEnumerator Hide_Quest()
+    {
+        yield return new WaitForSeconds(1f);
+        descTransform.anchoredPosition = Vector2.Lerp(descTransform.anchoredPosition, new Vector2(0, 300), 5f * Time.deltaTime);
     }
 
     public void Move_Quest_Text()
