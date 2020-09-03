@@ -68,6 +68,7 @@ public class Projectile : MonoBehaviour
             gameObject.SetActive(false);
             Debug.Log("player projectile hit :" + collision.tag);
         }
+        
     }
 
     private void OnTriggerStay2D(Collider2D collision)

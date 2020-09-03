@@ -8,6 +8,7 @@ TagManager:
   - Slide Wall
   - TurnObjectsOn
   - Enemy
+  - PlayerProjectile
   layers:
   - Default
   - TransparentFX

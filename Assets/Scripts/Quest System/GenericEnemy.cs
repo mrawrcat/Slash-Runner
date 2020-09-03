@@ -90,7 +90,10 @@ public class GenericEnemy : MonoBehaviour, IEnemy
                     Die();
                 }
             }
-            
+        }
+        if (collision.tag == "PlayerProjectile")
+        {
+            Die();
         }
     }
 
@@ -110,6 +113,10 @@ public class GenericEnemy : MonoBehaviour, IEnemy
                 }
             }
 
+        }
+        if (collision.tag == "PlayerProjectile")
+        {
+            Die();
         }
     }
 }
