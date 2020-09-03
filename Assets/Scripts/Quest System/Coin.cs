@@ -5,7 +5,7 @@ using UnityEngine;
 public class Coin : MonoBehaviour, ICollectable
 {
     public string itemID { get; set; }
-
+    public Transform start_pos;
 
     // Start is called before the first frame update
     void Start()
@@ -15,6 +15,7 @@ public class Coin : MonoBehaviour, ICollectable
 
     public void Collect()
     {
+        GameManager.manager.coins++;
         CollectionEvents.CollectableCollected(this);
         gameObject.SetActive(false);
     }
@@ -23,6 +24,7 @@ public class Coin : MonoBehaviour, ICollectable
     {
         if(collision.tag == "Player")
         {
+            Debug.Log("coin touched player");
             Collect();
         }
     }

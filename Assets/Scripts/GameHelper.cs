@@ -88,7 +88,7 @@ public class GameHelper : MonoBehaviour
         reviveButtonRect.anchoredPosition = Vector2.Lerp(reviveButtonRect.anchoredPosition, new Vector2(0, 0), 5f * Time.deltaTime);
     }
 
-    public void MoveDeadStats()
+    public void MoveDeadStats()//skipped or no more continues -> maybe talk to questgiver again here?
     {
         dead_panel.SetActive(true);
         //deadStats.anchoredPosition = Vector2.Lerp(deadStats.anchoredPosition, new Vector2(0, 65), 5f * Time.deltaTime);

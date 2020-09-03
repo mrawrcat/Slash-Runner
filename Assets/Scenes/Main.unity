@@ -395,7 +395,6 @@ GameObject:
   - component: {fileID: 235780367}
   - component: {fileID: 235780369}
   - component: {fileID: 235780368}
-  - component: {fileID: 235780370}
   - component: {fileID: 235780371}
   - component: {fileID: 235780374}
   - component: {fileID: 235780376}
@@ -474,60 +473,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.1922951, y: 2.1981459}
   m_EdgeRadius: 0
---- !u!114 &235780370
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 235780366}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 06199d8f373c7424e8a992e560d4b0cc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  startPos: {x: 0, y: 0}
-  direction: {x: 0, y: 0}
-  directionChosen: 0
-  holding_jump: 0
-  holding_atk: 0
-  holding_atk_timer: 0
-  normal_collider: {fileID: 235780369}
-  revive_collider: {fileID: 2063946756}
-  revive_ground: {fileID: 1417523979}
-  bottomOffset: {x: -0.1, y: -1.4}
-  boxSize: {x: 1.1, y: 1}
-  inWallOffset: {x: 0, y: 0}
-  inWallBoxsize: {x: 0, y: 0}
-  isGrounded: 0
-  isBashing: 0
-  isUnderSlideWall: 0
-  insideWall: 0
-  gravity: 0
-  fallMultiplier: 2.5
-  lowJumpMultiplier: 2
-  whatIsGround:
-    serializedVersion: 2
-    m_Bits: 256
-  SlideWall:
-    serializedVersion: 2
-    m_Bits: 512
-  inWall:
-    serializedVersion: 2
-    m_Bits: 512
-  whatIsEnemy:
-    serializedVersion: 2
-    m_Bits: 0
-  Atk_Radius: 1.5
-  Atk_Pos: {fileID: 822151118}
-  jumpforce: 15
-  ground_time: 0.3
-  ground_counter: 0
-  jump_particle: {fileID: 668817373}
-  Jump1: 0
-  Jump2: 0
-  startpos: {fileID: 0}
-  bullet_pool: {fileID: 0}
 --- !u!114 &235780371
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2321,6 +2266,7 @@ Transform:
   - {fileID: 1909950896715630313}
   - {fileID: 1218077629}
   - {fileID: 6944742161119097596}
+  - {fileID: 1385910373677736206}
   m_Father: {fileID: 902328943}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2434,12 +2380,15 @@ MonoBehaviour:
   - tag: Big Wall
     prefab: {fileID: 791122342977728874, guid: b06a0e7dfe5b30841aee353d6b3ae957, type: 3}
     size: 5
+  - tag: Big Wall & Coins
+    prefab: {fileID: 2725299262129268309, guid: f4fef5f5a603ffe4b870ea6bd192b063, type: 3}
+    size: 5
   tags:
   - Box
   - Small Wall
-  - Big Wall
-  - Big Wall
-  - Big Wall
+  - Big Wall & Coins
+  - Big Wall & Coins
+  - Big Wall & Coins
 --- !u!1 &1105912632
 GameObject:
   m_ObjectHideFlags: 0
@@ -4504,11 +4453,81 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 875c5c0fcc4f1094ca2aeb1e98ead4b5, type: 3}
+--- !u!4 &1385910373677736206 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2725299262129268310, guid: f4fef5f5a603ffe4b870ea6bd192b063, type: 3}
+  m_PrefabInstance: {fileID: 3956846687117264728}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1909950896715630313 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7084048861812372481, guid: ef9fb125dbde83c40bba912284b9eeb2, type: 3}
   m_PrefabInstance: {fileID: 8704924612740952808}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &3956846687117264728
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1039941003}
+    m_Modifications:
+    - target: {fileID: 2725299262129268309, guid: f4fef5f5a603ffe4b870ea6bd192b063, type: 3}
+      propertyPath: m_Name
+      value: Big Wall & Coins
+      objectReference: {fileID: 0}
+    - target: {fileID: 2725299262129268309, guid: f4fef5f5a603ffe4b870ea6bd192b063, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2725299262129268310, guid: f4fef5f5a603ffe4b870ea6bd192b063, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 69
+      objectReference: {fileID: 0}
+    - target: {fileID: 2725299262129268310, guid: f4fef5f5a603ffe4b870ea6bd192b063, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2725299262129268310, guid: f4fef5f5a603ffe4b870ea6bd192b063, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2725299262129268310, guid: f4fef5f5a603ffe4b870ea6bd192b063, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2725299262129268310, guid: f4fef5f5a603ffe4b870ea6bd192b063, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2725299262129268310, guid: f4fef5f5a603ffe4b870ea6bd192b063, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2725299262129268310, guid: f4fef5f5a603ffe4b870ea6bd192b063, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2725299262129268310, guid: f4fef5f5a603ffe4b870ea6bd192b063, type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2725299262129268310, guid: f4fef5f5a603ffe4b870ea6bd192b063, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2725299262129268310, guid: f4fef5f5a603ffe4b870ea6bd192b063, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2725299262129268310, guid: f4fef5f5a603ffe4b870ea6bd192b063, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2725299262129268311, guid: f4fef5f5a603ffe4b870ea6bd192b063, type: 3}
+      propertyPath: m_ColliderPaths.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f4fef5f5a603ffe4b870ea6bd192b063, type: 3}
 --- !u!1001 &4275247334794338700
 PrefabInstance:
   m_ObjectHideFlags: 0
