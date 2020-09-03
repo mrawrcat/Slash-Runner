@@ -25,6 +25,7 @@ public class Projectile : MonoBehaviour
                 particles.SpawnParticle(transform);
                 gameObject.SetActive(false);
                 Debug.Log("player projectile hit :" + collision.collider.tag);
+                
             }
         }
         if(collision.collider.tag == "TurnObjectsOn")

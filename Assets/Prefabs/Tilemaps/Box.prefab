@@ -940,7 +940,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8704924612840206723}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: StartPos
   m_TagString: Untagged
   m_Icon: {fileID: 0}

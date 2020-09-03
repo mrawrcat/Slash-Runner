@@ -32,9 +32,19 @@ public class PlayerJump : MonoBehaviour
 
     public void Jump()
     {
-        SoundManager.sound_manager.jump_sfx.Play();
+
         rb2d.velocity = Vector2.zero;
         rb2d.AddForce(Vector2.up * jumpforce, ForceMode2D.Impulse);
+        jump_particle.Play();
+        if (Jump1)
+        {
+            Jump1 = false;
+        }
+        if(!Jump1 && Jump2)
+        {
+            Jump2 = false;
+        }
+        SoundManager.sound_manager.jump_sfx.Play();
     }
 
     public void JumpCheck()
@@ -52,7 +62,7 @@ public class PlayerJump : MonoBehaviour
         }
         else
         {
-            if(ground_counter < 0)
+            if(ground_counter <= 0)
             {
                 Jump1 = false;
             }
@@ -81,13 +91,13 @@ public class PlayerJump : MonoBehaviour
             {
                 if (ground_counter > 0 && Jump1)
                 {
+                    //Jump1 = false;
                     Jump();
-                    Jump1 = false;
                 }
                 else if (!player_collisions.isGrounded && !Jump1 && Jump2)
                 {
+                    //Jump2 = false;
                     Jump();
-                    Jump2 = false;
                 }
             }
             holding_jump = false;

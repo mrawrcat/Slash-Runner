@@ -6,10 +6,12 @@ public class PlayerDeath : MonoBehaviour
 {
     public Transform startpos;
     private Rigidbody2D rb2d;
+    private CamShake shake;
     // Start is called before the first frame update
     void Start()
     {
         rb2d = GetComponent<Rigidbody2D>();
+        shake = FindObjectOfType<CamShake>();
     }
 
     // Update is called once per frame
@@ -69,6 +71,13 @@ public class PlayerDeath : MonoBehaviour
             SoundManager.sound_manager.play_hit_sfx = false;
             SoundManager.sound_manager.play_death_sfx = false;
         }
+
+    }
+
+    public void Die()
+    {
+        GameManager.manager.dead = true;
+        shake.Shake();
 
     }
 

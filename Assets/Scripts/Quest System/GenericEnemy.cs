@@ -7,13 +7,15 @@ public class GenericEnemy : MonoBehaviour, IEnemy
     public int ID { get; set; }
 
     private float health;
+    private PlayerDeath player_death;
     // Start is called before the first frame update
     void Start()
     {
         ID = 0;
+        player_death = FindObjectOfType<PlayerDeath>();
     }
 
-    
+    /*
     public void Take_Dmg(float dmg_amt)
     {
         health -= dmg_amt;
@@ -23,7 +25,7 @@ public class GenericEnemy : MonoBehaviour, IEnemy
             gameObject.SetActive(false);
         }
     }
-
+    */
     public void Die()
     {
         CombatEvents.EnemyDied(this);
@@ -32,5 +34,82 @@ public class GenericEnemy : MonoBehaviour, IEnemy
 
     }
 
-    
+    /*
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.collider.tag == "Player")
+        {
+            Debug.Log("collided with player");
+            if(GameManager.manager.invincible <= 0)
+            {
+                player_death.Die();
+            }
+            else
+            {
+                Die();
+            }
+        }
+        if(collision.collider.tag == "PlayerProjectile")
+        {
+            Die();
+        }
+    }
+
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        if (collision.collider.tag == "Player")
+        {
+            Debug.Log("touching player");
+            if (GameManager.manager.invincible <= 0)
+            {
+                player_death.Die();
+            }
+            else
+            {
+                Die();
+            }
+        }
+        if (collision.collider.tag == "PlayerProjectile")
+        {
+            Die();
+        }
+    }
+    */
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.tag == "Player")
+        {
+            if(!GameManager.manager.dead && !GameManager.manager.movingReset)
+            {
+                if (GameManager.manager.invincible <= 0)
+                {
+                    player_death.Die();
+                }
+                else
+                {
+                    Die();
+                }
+            }
+            
+        }
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.tag == "Player")
+        {
+            if (!GameManager.manager.dead && !GameManager.manager.movingReset)
+            {
+                if (GameManager.manager.invincible <= 0)
+                {
+                    player_death.Die();
+                }
+                else
+                {
+                    Die();
+                }
+            }
+
+        }
+    }
 }

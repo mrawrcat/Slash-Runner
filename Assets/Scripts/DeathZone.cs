@@ -43,6 +43,9 @@ public class DeathZone : MonoBehaviour
             {
                 GameManager.manager.dead = true;
             }
+
+            //collision.GetComponent<PlayerDeath>().Die();
         }
+
     }
 }
