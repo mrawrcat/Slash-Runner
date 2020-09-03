@@ -32,7 +32,7 @@ public class PlayerJump : MonoBehaviour
 
     public void Jump()
     {
-        //GameManager.manager.jump_sfx.Play();
+        SoundManager.sound_manager.jump_sfx.Play();
         rb2d.velocity = Vector2.zero;
         rb2d.AddForce(Vector2.up * jumpforce, ForceMode2D.Impulse);
     }

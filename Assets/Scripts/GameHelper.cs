@@ -23,7 +23,6 @@ public class GameHelper : MonoBehaviour
 
     [Header("RectTransforms")]
     public RectTransform reviveButtonRect;
-    //public RectTransform deadStats;
 
     private float distLerpHolder;
     private float coinsLerpHolder;
@@ -31,10 +30,12 @@ public class GameHelper : MonoBehaviour
     private float dead_countdown;
 
     private PlayerDeath player_death;
+    private Quest_Giver quest_giver;
     // Start is called before the first frame update
     void Start()
     {
         player_death = FindObjectOfType<PlayerDeath>();
+        quest_giver = FindObjectOfType<Quest_Giver>();
         //pool = GameObject.Find("Tilemap").GetComponent<ObjectPoolNS>();
     }
 
@@ -90,16 +91,13 @@ public class GameHelper : MonoBehaviour
 
     public void MoveDeadStats()//skipped or no more continues -> maybe talk to questgiver again here?
     {
+        quest_giver.Talk_to_Quest_Giver();
         dead_panel.SetActive(true);
         //deadStats.anchoredPosition = Vector2.Lerp(deadStats.anchoredPosition, new Vector2(0, 65), 5f * Time.deltaTime);
         distLerpHolder = Mathf.Lerp(0, GameManager.manager.distanceMoved, lerpSpeed);
         coinsLerpHolder = Mathf.Lerp(0, GameManager.manager.coins, lerpSpeed);
     }
 
-    public void MoveQuestText()
-    {
-
-    }
 
     public void pauseGame()
     {
@@ -132,6 +130,10 @@ public class GameHelper : MonoBehaviour
         GameManager.manager.bossAppearDist = 500;
         */
         player_death.InstantMove();
+        quest_giver.Forfeit_Quest();
+        quest_giver.questNum = Random.Range(0, quest_giver.how_many_quests);
+        quest_giver.Talk_to_Quest_Giver();
+        quest_giver.showedQuest = false;
         //GameManager.manager.finalSpeed = 10;
     }
 

@@ -22,11 +22,20 @@ public class PlayerDeath : MonoBehaviour
     {
         if (GameManager.manager.dead)
         {
-            //play death hit sound
             SoundManager.sound_manager.gameplay_soundtrack.Pause();
+            if (!SoundManager.sound_manager.play_hit_sfx)//play death hit sound
+            {
+                SoundManager.sound_manager.hit_sfx.Play();
+                SoundManager.sound_manager.play_hit_sfx = true;
+
+            }
             if(transform.position.y <= -10)
             {
-                //play gameover sound
+                if (!SoundManager.sound_manager.play_death_sfx)//play gameover sound
+                {
+                    SoundManager.sound_manager.death_sfx.Play();
+                    SoundManager.sound_manager.play_death_sfx = true;
+                }
                 GameManager.manager.isUnder = true;
                 transform.position = new Vector2(-5, -10);
                 rb2d.velocity = Vector2.zero;
@@ -49,6 +58,16 @@ public class PlayerDeath : MonoBehaviour
                 GameManager.manager.invincible = 1f;
                 rb2d.gravityScale = 3;
             }
+        }
+
+        if (!GameManager.manager.dead)
+        {
+            if (SoundManager.sound_manager.death_sfx.isPlaying)
+            {
+                SoundManager.sound_manager.death_sfx.Stop();
+            }
+            SoundManager.sound_manager.play_hit_sfx = false;
+            SoundManager.sound_manager.play_death_sfx = false;
         }
 
     }

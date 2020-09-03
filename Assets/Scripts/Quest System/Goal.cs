@@ -19,14 +19,15 @@ public class Goal
     {
         if (Current_Amount >= Required_Amount)
         {
+            Debug.Log("quest current amt obtained" + Current_Amount);
             Complete();
         }
     }
 
     public void Complete()
     {
-        Quest.Check_Goals();
         Completed = true;
+        Quest.Check_Goals();
     }
 
 }

@@ -101,7 +101,7 @@ public class PlayerAttack : MonoBehaviour
             }
             if (enemy.GetComponent<IEnemy>() != null)
             {
-                //GameManager.manager.smash_sfx.Play();
+                SoundManager.sound_manager.smash_sfx.Play();
                 if (!isFrozen)
                 {
                     StartCoroutine(hit_pause(hit_pause_dur));

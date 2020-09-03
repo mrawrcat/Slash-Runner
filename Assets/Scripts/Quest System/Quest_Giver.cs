@@ -15,8 +15,9 @@ public class Quest_Giver : MonoBehaviour
     private Quest Quest;
     public string quest_name_desc;
     public Text descTxt;
+    public Text isQuestComplete;
     public RectTransform descTransform;
-    private bool showedQuest = false;
+    public bool showedQuest = false;
     public int questNum;
     void Start()
     {
@@ -60,12 +61,14 @@ public class Quest_Giver : MonoBehaviour
     {
         Assigned_Quest = true;
         Quest = (Quest)quest.AddComponent(System.Type.GetType(quest_script_name[questNum]));
+        isQuestComplete.text = "Quest Incomplete";
     }
 
     void Giver_Checks_Quest()
     {
         if (Quest.Quest_Completed)
         {
+            isQuestComplete.text = "Quest Complete";
             Quest.Give_Reward();
             Helped = true;
             Assigned_Quest = false;
