@@ -10,6 +10,9 @@ public class SoundHelper : MonoBehaviour
     public Slider music_volume;
     public Slider sfx_volume;
     public Button music_mute_onoff;
+
+    public Text muteMusicTxt;
+    public Text muteSfxTxt;
     private Scene scene;
     // Start is called before the first frame update
     void Start()
@@ -33,6 +36,26 @@ public class SoundHelper : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        if (SoundManager.sound_manager.mute_music)
+        {
+            muteMusicTxt.text = "music muted";
+        }
+        else
+        {
+            muteMusicTxt.text = "music on";
+        }
+
+        if (SoundManager.sound_manager.mute_sfx)
+        {
+            muteSfxTxt.text = "sfx muted";
+        }
+        else
+        {
+            muteSfxTxt.text = "sfx on";
+        }
+    }
 
     public void slideAudio()
     {

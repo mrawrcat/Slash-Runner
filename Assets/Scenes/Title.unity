@@ -478,7 +478,7 @@ GameObject:
   - component: {fileID: 235999599}
   - component: {fileID: 235999598}
   m_Layer: 5
-  m_Name: Text
+  m_Name: mutemusicText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -899,6 +899,8 @@ MonoBehaviour:
   music_volume: {fileID: 260710659}
   sfx_volume: {fileID: 1220892629}
   music_mute_onoff: {fileID: 206964752}
+  muteMusicTxt: {fileID: 235999598}
+  muteSfxTxt: {fileID: 436348362}
 --- !u!114 &284906067
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1274,7 +1276,7 @@ GameObject:
   - component: {fileID: 436348363}
   - component: {fileID: 436348362}
   m_Layer: 5
-  m_Name: Text
+  m_Name: mutesfxText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

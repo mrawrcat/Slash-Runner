@@ -70,6 +70,7 @@ public class PlayerJump : MonoBehaviour
     {
         Jump1 = true;
         Jump2 = true;
+        //particle in jump and land func should be different for final
         jump_particle.Play();
     }
 
