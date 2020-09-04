@@ -42,7 +42,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        bossAppearDist = 500;
+        bossAppearDist = 50;
         savefinalSpeed = finalSpeed;
     }
 
@@ -69,7 +69,7 @@ public class GameManager : MonoBehaviour
             if (enable_Boss)
             {
                 bossBattle = true;
-                randomBoss();
+                //randomBoss();
             }
         }
 

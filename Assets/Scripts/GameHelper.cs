@@ -6,8 +6,8 @@ using UnityEngine.UI;
 public class GameHelper : MonoBehaviour
 {
     public GameObject[] start_tilemaps;
-
     public ObjectPoolNS pool;
+    public GameObject[] boss_obj;
     
 
     [Header("Dead stuff")]
@@ -44,6 +44,22 @@ public class GameHelper : MonoBehaviour
     {
         show_text();
         If_Dead();
+        Show_Boss();
+    }
+
+    private void Show_Boss()
+    {
+        for (int i = 0; i < boss_obj.Length; i++)
+        {
+            if (i == GameManager.manager.whichBoss)
+            {
+                boss_obj[i].SetActive(true);
+            }
+            else
+            {
+                boss_obj[i].SetActive(false);
+            }
+        }
     }
 
     private void show_text()
@@ -122,26 +138,24 @@ public class GameHelper : MonoBehaviour
         GameManager.manager.dead = false;
         GameManager.manager.movingReset = true;
         GameManager.manager.bossBattle = false;
-        /*
-        for (int i = 0; i < Boss.Length; i++)
+        
+        for (int i = 0; i < boss_obj.Length; i++)
         {
-            Boss[i].GetComponent<BossBattle>().InstantMove();
+            boss_obj[i].GetComponent<BossMove>().InstantMove();
         }
         GameManager.manager.bossAppearDist = 500;
-        */
+        
         player_death.InstantMove();
         quest_giver.Forfeit_Quest();
         quest_giver.questNum = Random.Range(0, quest_giver.how_many_quests);
         quest_giver.Talk_to_Quest_Giver();
         quest_giver.showedQuest = false;
-        //GameManager.manager.finalSpeed = 10;
+        
     }
 
     public void Continue()
     {
         GameManager.manager.dead = false;
         GameManager.manager.movingReset = true;
-        //GameManager.manager.finalSpeed = 10;
-
     }
 }
