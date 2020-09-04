@@ -118,7 +118,7 @@ public class ObjectPoolNS : MonoBehaviour
     }
     public void SpawnBossTM()
     {
-        SpawnFromPool(tags[Random.Range(0, 2)], transform.position + new Vector3(40, 0, 0));
+        SpawnFromPool(tags[Random.Range(0, 1)], transform.position + new Vector3(100, 0, 0));
     }
 
     public void SpawnProjectile(Transform pos)

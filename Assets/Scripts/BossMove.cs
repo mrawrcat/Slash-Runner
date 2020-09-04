@@ -60,14 +60,13 @@ public class BossMove : MonoBehaviour
                 {
                     charging += Time.deltaTime;
                 }
-
-                
             }
         }
         else
         {
             BossWarning.SetActive(false);
-            transform.position = Vector2.MoveTowards(transform.position, new Vector2(idlePosx, transform.position.y), 5f * Time.deltaTime);
+            charging = 0;
+            transform.position = Vector2.MoveTowards(transform.position, new Vector2(idlePosx, transform.position.y), 10f * Time.deltaTime);
             if (transform.position.x == idlePosx)
             {
                 boss.health = 3;

@@ -135,5 +135,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tags:
-  - Ground
-  - Wall
+  - Tilemap
+  - Slide Wall
+  - Player
+  - Enemy

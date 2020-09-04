@@ -2304,7 +2304,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Grid: {fileID: 669463648}
-  speed: -5
+  speed: -10
   pools:
   - tag: Boss Projectile
     prefab: {fileID: 8483348952462761090, guid: ff21064f0d9117d40a006346be9c3985, type: 3}
@@ -3083,6 +3083,7 @@ MonoBehaviour:
   idlePosx: 20
   moving: 0
   bossShoot_Timer: 0
+  charging: 0
 --- !u!1 &983629849
 GameObject:
   m_ObjectHideFlags: 0
@@ -4287,7 +4288,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1405524467}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -2, y: -1.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 941624399}
