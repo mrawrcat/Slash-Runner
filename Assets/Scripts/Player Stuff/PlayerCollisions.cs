@@ -28,7 +28,7 @@ public class PlayerCollisions : MonoBehaviour
         normal_collider = GetComponent<BoxCollider2D>();
     }
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         CollisionDetection();
     }

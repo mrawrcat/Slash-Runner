@@ -24,6 +24,7 @@ public class PlaceholderBoss : MonoBehaviour, IEnemy
         Debug.Log("killed Boss");
         //gameObject.SetActive(false);
         GameManager.manager.bossBattle = false;
+        GameManager.manager.bossAppearDist = GameManager.manager.distanceMoved + 300;
 
     }
 

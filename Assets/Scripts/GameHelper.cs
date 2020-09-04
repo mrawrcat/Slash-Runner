@@ -158,4 +158,9 @@ public class GameHelper : MonoBehaviour
         GameManager.manager.dead = false;
         GameManager.manager.movingReset = true;
     }
+
+    public void Refuse_Continue()
+    {
+        dead_countdown = 0;
+    }
 }

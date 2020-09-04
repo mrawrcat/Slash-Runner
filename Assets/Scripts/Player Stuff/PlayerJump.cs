@@ -6,8 +6,8 @@ public class PlayerJump : MonoBehaviour
 {
     [Header("Jump Stuff")]
     public float jumpforce;
-    public float ground_time;
-    public float ground_counter;
+    //public float ground_time;
+    //public float ground_counter;
     public bool Jump1;
     public bool Jump2;
     public ParticleSystem jump_particle;
@@ -26,24 +26,19 @@ public class PlayerJump : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        JumpCheck();
+        //JumpCheck();
         KeyboardInputJump();
+    }
+    private void FixedUpdate()
+    {
+        JumpCheck();
     }
 
     public void Jump()
     {
-
         rb2d.velocity = Vector2.zero;
         rb2d.AddForce(Vector2.up * jumpforce, ForceMode2D.Impulse);
         jump_particle.Play();
-        if (Jump1)
-        {
-            Jump1 = false;
-        }
-        if(!Jump1 && Jump2)
-        {
-            Jump2 = false;
-        }
         SoundManager.sound_manager.jump_sfx.Play();
     }
 
@@ -56,23 +51,25 @@ public class PlayerJump : MonoBehaviour
                 Play_Land_Particle();
                 groundTouch = true;
             }
-            Jump1 = true;
-            Jump2 = true;
-            ground_counter = ground_time;
+            //ground_counter = ground_time;
         }
         else
         {
+            /*
             if(ground_counter <= 0)
             {
                 Jump1 = false;
             }
-            ground_counter -= Time.deltaTime;
+            */
+            //ground_counter -= Time.deltaTime;
             groundTouch = false;
         }  
     }
 
     public void Play_Land_Particle()
     {
+        Jump1 = true;
+        Jump2 = true;
         jump_particle.Play();
     }
 
@@ -89,14 +86,14 @@ public class PlayerJump : MonoBehaviour
         {
             if (!GameManager.manager.movingReset && !GameManager.manager.dead)
             {
-                if (ground_counter > 0 && Jump1)
+                if (Jump1)
                 {
-                    //Jump1 = false;
+                    Jump1 = false;
                     Jump();
                 }
                 else if (!player_collisions.isGrounded && !Jump1 && Jump2)
                 {
-                    //Jump2 = false;
+                    Jump2 = false;
                     Jump();
                 }
             }
