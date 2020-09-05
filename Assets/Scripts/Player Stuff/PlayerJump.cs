@@ -14,6 +14,7 @@ public class PlayerJump : MonoBehaviour
     public bool holding_jump;
 
     private bool groundTouch;
+    private float holdrb2d;
     private Rigidbody2D rb2d;
     private PlayerCollisions player_collisions;
     // Start is called before the first frame update
@@ -21,6 +22,7 @@ public class PlayerJump : MonoBehaviour
     {
         rb2d = GetComponent<Rigidbody2D>();
         player_collisions = GetComponent<PlayerCollisions>();
+        holdrb2d = rb2d.gravityScale;
     }
 
     // Update is called once per frame
@@ -28,6 +30,7 @@ public class PlayerJump : MonoBehaviour
     {
         //JumpCheck();
         KeyboardInputJump();
+        Floating();
     }
     private void FixedUpdate()
     {
@@ -83,7 +86,7 @@ public class PlayerJump : MonoBehaviour
                 holding_jump = true;
             }
         }
-        if (Input.GetKeyUp(KeyCode.Z))
+        if (Input.GetKeyDown(KeyCode.Z))
         {
             if (!GameManager.manager.movingReset && !GameManager.manager.dead)
             {
@@ -98,9 +101,28 @@ public class PlayerJump : MonoBehaviour
                     Jump();
                 }
             }
+        }
+        if (Input.GetKeyUp(KeyCode.Z))
+        {
             holding_jump = false;
         }
     }
 
+    public void Floating()
+    {
+        if (holding_jump)
+        {
+            rb2d.gravityScale = holdrb2d / 6;
+        }
+        else if(rb2d.velocity.y < 0)
+        {
+            rb2d.gravityScale = holdrb2d * 1.5f;
+        }
+        else
+        {
+            rb2d.gravityScale = holdrb2d;
+        }
+
+    }
 
 }
