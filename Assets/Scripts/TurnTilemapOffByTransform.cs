@@ -18,7 +18,15 @@ public class TurnTilemapOffByTransform : MonoBehaviour
         {
             if (GameManager.manager.bossBattle)
             {
-                tilemap_pool.SpawnBossTM();
+                if (!GameManager.manager.spawned_checkpoint)
+                {
+                    tilemap_pool.SpawnCheckpointTilemap();
+                    GameManager.manager.spawned_checkpoint = true;
+                }
+                else
+                {
+                    tilemap_pool.SpawnBossTM();
+                }
             }
             else
             {

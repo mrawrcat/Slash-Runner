@@ -22,6 +22,8 @@ public class GameManager : MonoBehaviour
     public bool bossBattle;
     public float bossAppearDist;
     public int whichBoss;
+    public bool spawned_checkpoint;
+    public bool passed_checkpoint;
 
     [Header("Game Mode Stuff")]
     public bool enable_Boss;

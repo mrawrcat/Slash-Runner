@@ -114,11 +114,15 @@ public class ObjectPoolNS : MonoBehaviour
     }
     public void SpawnTileMap()
     {
-        SpawnFromPool(tags[Random.Range(0, tags.Length)], transform.position + new Vector3(100,0,0));
+        SpawnFromPool(tags[Random.Range(2, tags.Length)], transform.position + new Vector3(100,0,0));
+    }
+    public void SpawnCheckpointTilemap()
+    {
+        SpawnFromPool(tags[Random.Range(0, 1)], transform.position + new Vector3(100, 0, 0));
     }
     public void SpawnBossTM()
     {
-        SpawnFromPool(tags[Random.Range(0, 1)], transform.position + new Vector3(100, 0, 0));
+        SpawnFromPool(tags[Random.Range(1, 2)], transform.position + new Vector3(100, 0, 0));
     }
 
     public void SpawnProjectile(Transform pos)

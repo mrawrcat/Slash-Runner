@@ -25,9 +25,9 @@ public class BossMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (GameManager.manager.bossBattle)
+        anim.SetFloat("Charging", charging);
+        if (GameManager.manager.passed_checkpoint)
         {
-            anim.SetFloat("Charging", charging);
             if (moving)
             {
                 BossWarning.SetActive(true);

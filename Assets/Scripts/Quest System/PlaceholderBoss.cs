@@ -25,6 +25,8 @@ public class PlaceholderBoss : MonoBehaviour, IEnemy
         //gameObject.SetActive(false);
         GameManager.manager.bossBattle = false;
         GameManager.manager.bossAppearDist = GameManager.manager.distanceMoved + 300;
+        GameManager.manager.spawned_checkpoint = false;
+        GameManager.manager.passed_checkpoint = false;
 
     }
 
