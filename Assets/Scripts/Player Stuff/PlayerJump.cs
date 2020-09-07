@@ -12,6 +12,9 @@ public class PlayerJump : MonoBehaviour
     public bool Jump2;
     public ParticleSystem jump_particle;
     public bool holding_jump;
+    public float fjump_remember;
+    private float fjump_time;
+
 
     private bool groundTouch;
     private float holdrb2d;
@@ -30,11 +33,21 @@ public class PlayerJump : MonoBehaviour
     {
         //JumpCheck();
         KeyboardInputJump();
-        Floating();
+        if(fjump_time >= 0)
+        {
+            fjump_time -= Time.deltaTime;
+        }
     }
     private void FixedUpdate()
     {
         JumpCheck();
+        Floating();
+
+        if (Jump1 && fjump_time > 0)
+        {
+            Jump1 = false;
+            Jump();
+        }
     }
 
     public void Jump()
@@ -90,12 +103,8 @@ public class PlayerJump : MonoBehaviour
         {
             if (!GameManager.manager.movingReset && !GameManager.manager.dead)
             {
-                if (Jump1)
-                {
-                    Jump1 = false;
-                    Jump();
-                }
-                else if (!player_collisions.isGrounded && !Jump1 && Jump2)
+                fjump_time = fjump_remember;
+                if (!player_collisions.isGrounded && !Jump1 && Jump2 && fjump_time > 0)
                 {
                     Jump2 = false;
                     Jump();
@@ -110,7 +119,7 @@ public class PlayerJump : MonoBehaviour
 
     public void Floating()
     {
-        if (holding_jump)
+        if (holding_jump && rb2d.velocity.y < 0)
         {
             rb2d.gravityScale = holdrb2d / 6;
         }

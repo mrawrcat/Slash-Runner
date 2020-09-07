@@ -23,6 +23,7 @@ public class SoundHelper : MonoBehaviour
             if (!SoundManager.sound_manager.title_soundtrack.isPlaying)
             {
                 music_volume.value = SoundManager.sound_manager.title_soundtrack.volume;
+                sfx_volume.value = SoundManager.sound_manager.jump_sfx.volume;
                 SoundManager.sound_manager.title_soundtrack.Play();
                 SoundManager.sound_manager.gameplay_soundtrack.Stop();
             }
@@ -31,6 +32,7 @@ public class SoundHelper : MonoBehaviour
         else if (scene.name == "Main")
         {
             music_volume.value = SoundManager.sound_manager.gameplay_soundtrack.volume;
+            sfx_volume.value = SoundManager.sound_manager.jump_sfx.volume;
             SoundManager.sound_manager.title_soundtrack.Stop();
             SoundManager.sound_manager.gameplay_soundtrack.Play();
         }
