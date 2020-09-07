@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 5266114784362822022}
   - component: {fileID: 4899568910675004959}
   - component: {fileID: 5610789256664328432}
+  - component: {fileID: 629490214017383546}
   m_Layer: 8
   m_Name: Box
   m_TagString: Tilemap
@@ -931,6 +932,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Objects:
   - {fileID: 2800127342172636297}
+--- !u!114 &629490214017383546
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7084048861812372480}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8422541d2ae4cb40b2e0f1145cd4a4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Height: 0
 --- !u!1 &8704924612840206722
 GameObject:
   m_ObjectHideFlags: 0

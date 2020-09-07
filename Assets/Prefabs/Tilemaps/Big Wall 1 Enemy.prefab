@@ -739,6 +739,7 @@ GameObject:
   - component: {fileID: 9123190174427405509}
   - component: {fileID: 2529886035903658406}
   - component: {fileID: 3818340430625474966}
+  - component: {fileID: 5630947389465118205}
   m_Layer: 8
   m_Name: Big Wall 1 Enemy
   m_TagString: Tilemap
@@ -1657,3 +1658,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Objects:
   - {fileID: 2232865207314543431}
+--- !u!114 &5630947389465118205
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9123190174427405533}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8422541d2ae4cb40b2e0f1145cd4a4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Height: 0

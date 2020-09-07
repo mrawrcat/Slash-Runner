@@ -14,7 +14,8 @@ public class PlayerJump : MonoBehaviour
     public bool holding_jump;
     public float fjump_remember;
     private float fjump_time;
-
+    public float floating_time;
+    private float floating_countdown;
 
     private bool groundTouch;
     private float holdrb2d;
@@ -78,6 +79,10 @@ public class PlayerJump : MonoBehaviour
             }
             */
             //ground_counter -= Time.deltaTime;
+            if (holding_jump)
+            {
+                floating_countdown -= Time.deltaTime;
+            }
             groundTouch = false;
         }  
     }
@@ -103,6 +108,7 @@ public class PlayerJump : MonoBehaviour
         {
             if (!GameManager.manager.movingReset && !GameManager.manager.dead)
             {
+                floating_countdown = floating_time;
                 fjump_time = fjump_remember;
                 if (!player_collisions.isGrounded && !Jump1 && Jump2 && fjump_time > 0)
                 {
@@ -119,7 +125,7 @@ public class PlayerJump : MonoBehaviour
 
     public void Floating()
     {
-        if (holding_jump && rb2d.velocity.y < 0)
+        if (holding_jump && rb2d.velocity.y < 0 && floating_countdown > 0)
         {
             rb2d.gravityScale = holdrb2d / 6;
         }

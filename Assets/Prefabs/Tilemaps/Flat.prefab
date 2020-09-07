@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 5202234245480979392}
   - component: {fileID: 3592436189140438470}
   - component: {fileID: 4265147612519037535}
+  - component: {fileID: 6766320686343915742}
   m_Layer: 8
   m_Name: Flat
   m_TagString: Tilemap
@@ -915,3 +916,16 @@ MonoBehaviour:
   layer:
     serializedVersion: 2
     m_Bits: 256
+--- !u!114 &6766320686343915742
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1909950897573560384}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8422541d2ae4cb40b2e0f1145cd4a4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Height: 0

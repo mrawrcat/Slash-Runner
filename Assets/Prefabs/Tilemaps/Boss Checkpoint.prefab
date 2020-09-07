@@ -87,6 +87,7 @@ GameObject:
   - component: {fileID: 1824426127100271109}
   - component: {fileID: 1824426127100271108}
   - component: {fileID: 4960232540596518759}
+  - component: {fileID: 7971169680988709542}
   m_Layer: 8
   m_Name: Boss Checkpoint
   m_TagString: Tilemap
@@ -992,6 +993,19 @@ MonoBehaviour:
   layer:
     serializedVersion: 2
     m_Bits: 256
+--- !u!114 &7971169680988709542
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1824426127100271132}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8422541d2ae4cb40b2e0f1145cd4a4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Height: 0
 --- !u!1 &4279954943330964336
 GameObject:
   m_ObjectHideFlags: 0

@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 3558355897699623851}
   - component: {fileID: 5226770431858455981}
   - component: {fileID: 4783672220826468916}
+  - component: {fileID: 3193222201734414224}
   m_Layer: 8
   m_Name: MId Platform
   m_TagString: Tilemap
@@ -916,6 +917,19 @@ MonoBehaviour:
   layer:
     serializedVersion: 2
     m_Bits: 256
+--- !u!114 &3193222201734414224
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7192916648532572203}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8422541d2ae4cb40b2e0f1145cd4a4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Height: 0
 --- !u!1 &8561594300566982742
 GameObject:
   m_ObjectHideFlags: 0

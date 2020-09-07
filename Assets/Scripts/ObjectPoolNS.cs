@@ -17,6 +17,7 @@ public class ObjectPoolNS : MonoBehaviour
 
     public Transform Grid;
     public float speed;
+    public float tileheight;
     public List<Pool> pools;
     public Dictionary<string, Queue<GameObject>> poolDictionary;
 
@@ -55,7 +56,10 @@ public class ObjectPoolNS : MonoBehaviour
 
         GameObject objToSpawn =  poolDictionary[tag].Dequeue();
         objToSpawn.SetActive(true);
-        objToSpawn.transform.position = pos;
+        objToSpawn.transform.position = pos + new Vector2(0, tileheight);
+        float additonal_height = objToSpawn.GetComponent<TilemapHeight>().Height;
+        tileheight += additonal_height;
+
         //objToSpawn.transform.SetParent(Grid.transform);
 
         poolDictionary[tag].Enqueue(objToSpawn);
