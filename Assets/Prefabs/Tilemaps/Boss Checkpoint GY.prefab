@@ -8458,7 +8458,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e3a8535f96e06e4b8eda53db0eefeac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  booga: {x: -12, y: -4.5}
+  booga: {x: -12.1, y: -4}
   tilename: 
   layer:
     serializedVersion: 2

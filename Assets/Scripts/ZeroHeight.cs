@@ -5,6 +5,7 @@ using UnityEngine;
 public class ZeroHeight : MonoBehaviour
 {
     public Transform targetobj;
+    public float offsetY;
     // Start is called before the first frame update
     void Start()
     {
@@ -14,6 +15,6 @@ public class ZeroHeight : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position = new Vector2(transform.position.x, targetobj.position.y + 3.5f);
+        transform.position = new Vector2(transform.position.x, targetobj.position.y + offsetY);
     }
 }

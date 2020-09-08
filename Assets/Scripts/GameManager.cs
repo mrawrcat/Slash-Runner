@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     public float invincible;
 
     public float turn_tilemap_off;
+    public float deadheight;
     [Header("Game/Player Status")]
     public bool dead;
     public bool movingReset;

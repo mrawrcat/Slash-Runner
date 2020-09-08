@@ -20,6 +20,7 @@ public class BossMove : MonoBehaviour
     {
         boss = GetComponent<PlaceholderBoss>();
         anim = GetComponent<Animator>();
+        player_death = FindObjectOfType<PlayerDeath>();
     }
 
     // Update is called once per frame
@@ -31,7 +32,7 @@ public class BossMove : MonoBehaviour
             if (moving)
             {
                 BossWarning.SetActive(true);
-                transform.position = Vector2.MoveTowards(transform.position, new Vector2(battlePosx, transform.position.y), 5f * Time.deltaTime);
+                transform.position = Vector2.MoveTowards(transform.position, new Vector2(battlePosx, transform.position.y), 10f * Time.deltaTime);
 
             }
             else
@@ -66,7 +67,7 @@ public class BossMove : MonoBehaviour
         {
             BossWarning.SetActive(false);
             charging = 0;
-            transform.position = Vector2.MoveTowards(transform.position, new Vector2(idlePosx, transform.position.y), 10f * Time.deltaTime);
+            transform.position = Vector2.MoveTowards(transform.position, new Vector2(idlePosx, transform.position.y), 20f * Time.deltaTime);
             if (transform.position.x == idlePosx)
             {
                 boss.health = 3;

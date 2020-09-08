@@ -6999,6 +6999,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6544741479367764590, guid: d5a19812bf11be6459b3e2384fd19574, type: 3}
+      propertyPath: start_pos
+      value: 
+      objectReference: {fileID: 7528864411764808481}
     - target: {fileID: 6778504766381232112, guid: d5a19812bf11be6459b3e2384fd19574, type: 3}
       propertyPath: m_Name
       value: Box
@@ -7066,6 +7070,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6544741479367764590, guid: d5a19812bf11be6459b3e2384fd19574, type: 3}
+      propertyPath: start_pos
+      value: 
+      objectReference: {fileID: 7528864410553566288}
     - target: {fileID: 6778504766381232112, guid: d5a19812bf11be6459b3e2384fd19574, type: 3}
       propertyPath: m_Name
       value: Box

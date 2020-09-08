@@ -7,11 +7,13 @@ public class PlayerDeath : MonoBehaviour
     public Transform startpos;
     private Rigidbody2D rb2d;
     private CamShake shake;
+    private ObjectPoolNS pool;
     // Start is called before the first frame update
     void Start()
     {
         rb2d = GetComponent<Rigidbody2D>();
         shake = FindObjectOfType<CamShake>();
+        pool = GameObject.Find("Tilemap").GetComponent<ObjectPoolNS>();
     }
 
     // Update is called once per frame
@@ -31,7 +33,7 @@ public class PlayerDeath : MonoBehaviour
                 SoundManager.sound_manager.play_hit_sfx = true;
 
             }
-            if(transform.position.y <= -10)
+            if(transform.position.y <= GameManager.manager.deadheight -30)
             {
                 if (!SoundManager.sound_manager.play_death_sfx)//play gameover sound
                 {
@@ -39,7 +41,7 @@ public class PlayerDeath : MonoBehaviour
                     SoundManager.sound_manager.play_death_sfx = true;
                 }
                 GameManager.manager.isUnder = true;
-                transform.position = new Vector2(-5, -10);
+                transform.position = new Vector2(-5, GameManager.manager.deadheight - 30);
                 rb2d.velocity = Vector2.zero;
                 rb2d.gravityScale = 0;
             }
@@ -52,7 +54,8 @@ public class PlayerDeath : MonoBehaviour
                 rb2d.velocity = Vector2.zero;
             }
             GameManager.manager.isUnder = false;
-            transform.position = Vector2.MoveTowards(transform.position, startpos.position, 5f * Time.deltaTime);
+            startpos.position = new Vector2(-6, GameManager.manager.deadheight+5);
+            transform.position = Vector2.MoveTowards(transform.position, startpos.position, 30f * Time.deltaTime);
 
             if (transform.position == startpos.position)
             {
@@ -76,6 +79,7 @@ public class PlayerDeath : MonoBehaviour
 
     public void Die()
     {
+        GameManager.manager.deadheight = transform.position.y;
         GameManager.manager.dead = true;
         shake.Shake();
 

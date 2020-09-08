@@ -6,8 +6,20 @@ public class FollowPlayer : MonoBehaviour
 {
     public Transform focus;
     public float offset;
+    private ObjectPoolNS pool;
+
+    private void Start()
+    {
+        pool = GameObject.Find("Tilemap").GetComponent<ObjectPoolNS>();
+    }
     void Update()
     {
-        focus.position = new Vector2(focus.position.x, transform.position.y + offset);
+        if(!GameManager.manager.dead && !GameManager.manager.movingReset)
+        {
+            
+             transform.position = focus.position;
+            
+        }
+        
     }
 }
