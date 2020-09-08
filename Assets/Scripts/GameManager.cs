@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     public float distanceMoved;
     public float invincible;
 
+    public float turn_tilemap_off;
     [Header("Game/Player Status")]
     public bool dead;
     public bool movingReset;

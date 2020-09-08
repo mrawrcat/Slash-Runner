@@ -14,7 +14,7 @@ public class TurnTilemapOffByTransform : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(transform.position.x <= -30)
+        if(transform.position.x <= GameManager.manager.turn_tilemap_off)
         {
             if (GameManager.manager.bossBattle)
             {

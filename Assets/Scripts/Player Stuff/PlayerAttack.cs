@@ -44,6 +44,10 @@ public class PlayerAttack : MonoBehaviour
                 holding_atk_timer += Time.deltaTime;
                 holding_atk = true;
             }
+            else
+            {
+                holding_atk_timer = 0;
+            }
         }
         if (Input.GetKeyUp(KeyCode.X))
         {
@@ -61,8 +65,8 @@ public class PlayerAttack : MonoBehaviour
                     Debug.Log("regular attack");
                 }
 
-                holding_atk_timer = 0;
             }
+            holding_atk_timer = 0;
             holding_atk = false;
         }
 
