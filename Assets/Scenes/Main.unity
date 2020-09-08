@@ -3082,6 +3082,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startpos: {fileID: 302944418}
+  target_tracker: {fileID: 1200760249}
 --- !u!114 &744438952
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5107,6 +5108,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startpos: {fileID: 302944418}
+  target_tracker: {fileID: 0}
 --- !u!114 &1358284946
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5238,7 +5240,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1417523980
 Transform:
   m_ObjectHideFlags: 0

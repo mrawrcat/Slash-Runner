@@ -42,23 +42,23 @@ public class PlayerCollisions : MonoBehaviour
 
             if (insideWall)
             {
-                normal_collider.isTrigger = true;
+                //normal_collider.isTrigger = true;
                 revive_collider.SetActive(true);
-                revive_ground.SetActive(true);
+                //revive_ground.SetActive(true);
             }
             else
             {
                 normal_collider.isTrigger = false;
                 revive_collider.SetActive(false);
-                revive_ground.SetActive(false);
+                //revive_ground.SetActive(false);
             }
 
             //if invincible
             if (GameManager.manager.invincible > 0)
             {
-                normal_collider.isTrigger = true;
+                //normal_collider.isTrigger = true;
                 revive_collider.SetActive(true);
-                revive_ground.SetActive(true);
+                //revive_ground.SetActive(true);
             }
             else
             {
@@ -66,7 +66,7 @@ public class PlayerCollisions : MonoBehaviour
                 {
                     normal_collider.isTrigger = false;
                     revive_collider.SetActive(false);
-                    revive_ground.SetActive(false);
+                    //revive_ground.SetActive(false);
                 }
             }
         }

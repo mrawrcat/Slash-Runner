@@ -36,7 +36,7 @@ public class GameHelper : MonoBehaviour
     {
         player_death = FindObjectOfType<PlayerDeath>();
         quest_giver = FindObjectOfType<Quest_Giver>();
-        //pool = GameObject.Find("Tilemap").GetComponent<ObjectPoolNS>();
+        pool = GameObject.Find("Tilemap").GetComponent<ObjectPoolNS>();
     }
 
     // Update is called once per frame
@@ -133,7 +133,7 @@ public class GameHelper : MonoBehaviour
         for (int i = 0; i < start_tilemaps.Length; i++)
         {
             start_tilemaps[i].SetActive(true);
-            start_tilemaps[i].transform.position = new Vector2(0 + (23 * i), 0);
+            start_tilemaps[i].transform.position = new Vector2(-46 + (23 * i), 0);
         }
         GameManager.manager.dead = false;
         GameManager.manager.movingReset = true;
@@ -144,7 +144,7 @@ public class GameHelper : MonoBehaviour
             boss_obj[i].GetComponent<BossMove>().InstantMove();
         }
         GameManager.manager.bossAppearDist = 500;
-        
+        pool.tileheight = 0;
         player_death.InstantMove();
         quest_giver.Forfeit_Quest();
         quest_giver.questNum = Random.Range(0, quest_giver.how_many_quests);

@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerDeath : MonoBehaviour
 {
     public Transform startpos;
+    public GameObject target_tracker;
     private Rigidbody2D rb2d;
     private CamShake shake;
     private ObjectPoolNS pool;
@@ -89,6 +90,7 @@ public class PlayerDeath : MonoBehaviour
     {
         SoundManager.sound_manager.gameplay_soundtrack.Stop();
         SoundManager.sound_manager.gameplay_soundtrack.Play();
-        transform.position = startpos.position;
+        transform.position = new Vector2(-5,10);
+        target_tracker.transform.position = new Vector2(15, 10);
     }
 }
